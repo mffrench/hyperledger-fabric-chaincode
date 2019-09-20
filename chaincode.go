@@ -23,6 +23,7 @@ func (cc *SimpleAssetChaincode) Init(stub shim.ChaincodeStubInterface) peer.Resp
 
 func (cc *SimpleAssetChaincode) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 	function, args := stub.GetFunctionAndParameters()
+    _, args = args[0], args[1:]
 	logger.Debug(function, args)
 
 	var err error
