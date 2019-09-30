@@ -18,7 +18,8 @@ type SimpleAssetChaincode struct {
 
 func (cc *SimpleAssetChaincode) Init(stub shim.ChaincodeStubInterface) peer.Response {
 	logger.Info("Init chaincode for asset ....")
-	return shim.Success(nil)
+    args := stub.GetStringArgs()
+	return shim.Success([]byte{byte(len(args))})
 }
 
 func (cc *SimpleAssetChaincode) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
