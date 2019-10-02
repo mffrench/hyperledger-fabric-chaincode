@@ -38,6 +38,8 @@ func (cc *SimpleAssetChaincode) Invoke(stub shim.ChaincodeStubInterface) peer.Re
 		result, err = get(stub, args)
 	case "set":
 		result, err = set(stub, args)
+    case "setEvent":
+        result, err = setEvent(stub, args)
 	default:
 		logger.Error(unknownFunction)
 		return shim.Error(unknownFunction)

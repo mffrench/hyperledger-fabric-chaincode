@@ -77,3 +77,18 @@ func set(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 
 	return nil, nil
 }
+
+func setEvent(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+    if len(args) != 2 {
+        return nil, fmt.Errorf("Incorrect arguments. Expecting an event and its message")
+    }
+
+    eventID := args[0]
+    message := args[1]
+
+    if err := stub.SetEvent(eventID, []byte(message)); err != nil {
+        return nil, fmt.Errorf("Failed to set event: %s", args[0])
+    }
+
+    return nil, nil
+}
