@@ -84,8 +84,7 @@ func setEvent(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     }
 
     eventID := args[0]
-    //message := args[1]
-    message := "test, did you received ?"
+    message := args[1]
 
     if err := stub.SetEvent(eventID, []byte(message)); err != nil {
         return nil, fmt.Errorf("Failed to set event: %s", args[0])
